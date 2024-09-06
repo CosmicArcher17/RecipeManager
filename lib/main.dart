@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_manager/home.dart';
+import 'package:recipe_manager/pages/home.dart';
 
-void main(){
+void main() {
   runApp(RecipeManager());
 }
 
 class RecipeManager extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: HomePage(),
     );
   }

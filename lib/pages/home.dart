@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: Container(
-          child:  Text("days of TESTING"),
+          child:  Text("Welcome to the App"),
         ),
       ),
       drawer: Drawer(),
