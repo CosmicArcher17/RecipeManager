@@ -5,14 +5,13 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final int val=30;
     return Scaffold(
       appBar: AppBar(
         title: Text("Recipe App"),
       ),
       body: Center(
         child: Container(
-          child:  Text("$val days of TESTING"),
+          child:  Text("days of TESTING"),
         ),
       ),
       drawer: Drawer(),
