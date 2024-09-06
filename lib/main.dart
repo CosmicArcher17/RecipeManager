@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_manager/home.dart';
 
 void main(){
-  runApp(recipe_manager());
+  runApp(RecipeManager());
 }
-class recipe_manager extends StatelessWidget {
-  const recipe_manager ({super.key});
 
+class RecipeManager extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Material(
-        child: Center(
-          child:  Text("TESTING"),
-        ),
-      )
+      home: HomePage(),
     );
   }
 }
