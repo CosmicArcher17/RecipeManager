@@ -8,13 +8,21 @@ class RecipeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:Text("My Recipes",style: TextStyle(fontSize: 25,color:Colors.white),),
+        title:Text("My Recipes",style: TextStyle(fontSize: 25,color:Colors.white,fontWeight: FontWeight.bold),),
         centerTitle: true,
         backgroundColor: Color.fromARGB(238, 8, 32, 187),
       ),
-      body:Container(
-        child:Text("Your Recipes Displayed here",style: TextStyle(fontSize: 20),textAlign:TextAlign.center),
+      body:Center(
+        child: Column(children: [
+          ElevatedButton(onPressed: (){
+            Navigator.pushNamed(context,"/home");
+          }, 
+          child:Text("Home Page"),
+          )
+        ],
+       )
       ),
+      backgroundColor: Colors.white,
     );
   }
 }
