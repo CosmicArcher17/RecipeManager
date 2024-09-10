@@ -17,8 +17,17 @@ class RecipeView extends StatelessWidget {
           ElevatedButton(onPressed: (){
             Navigator.pushNamed(context,"/home");
           }, 
-          child:Text("Home Page"),
-          )
+          style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 58, 33, 243)),
+          child:Text("Home Page",style: TextStyle(color:Colors.white)),
+          ),
+          SizedBox(height: 20,),
+          ElevatedButton(
+              onPressed: (){
+              Navigator.pushNamed(context,"/AIPage");
+            },
+            style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 58, 33, 243)),
+            child:Text("Ask AI",style: TextStyle(color:Colors.white)),
+            ),
         ],
        )
       ),

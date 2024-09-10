@@ -29,7 +29,8 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, "/ViewRecipes");
               },
-              child: Text("Your Recipes"),
+              style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 58, 33, 243)),
+              child: Text("Your Recipes",style: TextStyle(color:Colors.white)),
             ),
              SizedBox(
               height: 20,
@@ -38,7 +39,8 @@ class HomePage extends StatelessWidget {
               onPressed: (){
               Navigator.pushNamed(context,"/AIPage");
             },
-            child:Text("Ask AI")
+            style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 58, 33, 243)),
+            child:Text("Ask AI",style: TextStyle(color:Colors.white)),
             ),
             
           ],

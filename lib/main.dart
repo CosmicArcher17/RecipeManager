@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_manager/pages/ask_ai.dart';
 import 'package:recipe_manager/pages/home.dart';
 import 'package:recipe_manager/pages/your_recipes.dart';
 
@@ -15,6 +16,7 @@ class RecipeManager extends StatelessWidget {
       routes:{
         "/home": (context)=>HomePage(),
         "/ViewRecipes":(context)=>RecipeView(),
+        "/AIPage":(context)=>AIPage(),
       },
       
     );
