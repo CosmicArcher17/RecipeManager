@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'sqlsetup.dart';
+import 'notemodel.dart';
 
 class RecipeView extends StatelessWidget {
   const RecipeView({super.key});
@@ -8,30 +10,100 @@ class RecipeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:Text("My Recipes",style: TextStyle(fontSize: 25,color:Colors.white,fontWeight: FontWeight.bold),),
+        title: Text(
+          "My Recipes",
+          style: TextStyle(
+              fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
         backgroundColor: Color.fromARGB(238, 8, 32, 187),
       ),
-      body:Center(
-        child: Column(children: [
-          ElevatedButton(onPressed: (){
-            Navigator.pushNamed(context,"/home");
-          }, 
-          style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 58, 33, 243)),
-          child:Text("Home Page",style: TextStyle(color:Colors.white)),
-          ),
-          SizedBox(height: 20,),
-          ElevatedButton(
-              onPressed: (){
-              Navigator.pushNamed(context,"/AIPage");
-            },
-            style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 58, 33, 243)),
-            child:Text("Ask AI",style: TextStyle(color:Colors.white)),
+      body: NotesPage(),
+    );
+  }
+}
+
+class NotesPage extends StatefulWidget {
+  @override
+  _NotesPageState createState() => _NotesPageState();
+}
+
+class _NotesPageState extends State<NotesPage> {
+  List<Note> _notes = [];
+  final _titleController = TextEditingController();
+  final _contentController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _loadNotes();
+  }
+
+  void _loadNotes() async {
+    final notes = await DBhelper.instance.readAllNotes();
+    setState(() {
+      _notes = notes;
+    });
+  }
+
+  void _addNote() async {
+    if (_titleController.text.isEmpty || _contentController.text.isEmpty) {
+      return;
+    }
+
+    final note = Note(
+      title: _titleController.text,
+      content: _contentController.text,
+    );
+    await DBhelper.instance.create(note);
+    _titleController.clear();
+    _contentController.clear();
+    _loadNotes();
+  }
+
+  void _deletenote(int id) async {
+    await DBhelper.instance.delete(id);
+    _loadNotes();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(children: [
+            TextField(
+              controller: _titleController,
+              decoration: InputDecoration(labelText: 'Title'),
             ),
-        ],
-       )
-      ),
-      backgroundColor: Colors.white,
+            TextField(
+              controller: _contentController,
+              decoration: InputDecoration(labelText: 'Content'),
+            ),
+            ElevatedButton(
+              onPressed: _addNote,
+              child: Text("Add Note"),
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: _notes.length,
+                itemBuilder: (context, index) {
+                  final note = _notes[index];
+                  return ListTile(
+                    title: Text(note.title),
+                    subtitle: Text(note.content),
+                    trailing: IconButton(
+                      icon: Icon(Icons.delete),
+                      onPressed: () => _deletenote(note.id!),
+                    ),
+                  );
+                },
+              ),
+            )
+          ]),
+        ),
+      ],
     );
   }
 }
