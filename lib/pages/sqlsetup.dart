@@ -2,7 +2,6 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'dart:async';
 import 'notemodel.dart';
-import 'package:flutter/material.dart';
 
 class DBhelper {
   DBhelper._init();

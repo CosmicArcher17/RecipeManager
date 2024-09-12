@@ -1,8 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:sqflite/sqflite.dart' 
-show getApplicationsDocumentsDirectory;
-import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
 
 class Note{
   int? id;
