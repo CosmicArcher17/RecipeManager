@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'sqlsetup.dart';
 import 'notemodel.dart';
 
@@ -68,42 +67,36 @@ class _NotesPageState extends State<NotesPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(children: [
-            TextField(
-              controller: _titleController,
-              decoration: InputDecoration(labelText: 'Title'),
-            ),
-            TextField(
-              controller: _contentController,
-              decoration: InputDecoration(labelText: 'Content'),
-            ),
-            ElevatedButton(
-              onPressed: _addNote,
-              child: Text("Add Note"),
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: _notes.length,
-                itemBuilder: (context, index) {
-                  final note = _notes[index];
-                  return ListTile(
-                    title: Text(note.title),
-                    subtitle: Text(note.content),
-                    trailing: IconButton(
-                      icon: Icon(Icons.delete),
-                      onPressed: () => _deletenote(note.id!),
-                    ),
-                  );
-                },
+    return Column(mainAxisSize: MainAxisSize.min, children: [
+      TextField(
+        controller: _titleController,
+        decoration: InputDecoration(labelText: 'Title'),
+      ),
+      TextField(
+        controller: _contentController,
+        decoration: InputDecoration(labelText: 'Content'),
+      ),
+      ElevatedButton(
+        onPressed: _addNote,
+        child: Text("Add Note"),
+      ),
+      Flexible(
+        fit: FlexFit.loose,
+        child: ListView.builder(
+          itemCount: _notes.length,
+          itemBuilder: (context, index) {
+            final note = _notes[index];
+            return ListTile(
+              title: Text(note.title),
+              subtitle: Text(note.content),
+              trailing: IconButton(
+                icon: Icon(Icons.delete),
+                onPressed: () => _deletenote(note.id!),
               ),
-            )
-          ]),
+            );
+          },
         ),
-      ],
-    );
+      )
+    ]);
   }
 }

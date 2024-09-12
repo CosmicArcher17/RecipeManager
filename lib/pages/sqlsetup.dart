@@ -10,7 +10,7 @@ class DBhelper {
 
   Future<Database> get database async {
     if (_database != null) return _database!;
-    _database = await _initDB('testing.db');
+    _database = await _initDB("C:/Users/Aadit/OneDrive/Desktop/testing.db");
     return _database!;
   }
 
@@ -21,12 +21,12 @@ class DBhelper {
     return await openDatabase(
       path,
       version:
-          1, /*for now dont use onCreate:_createDB use only when db is not created*/
+          1, onCreate:_createDB
     );
   }
-  /* use only when db and table not created Future _createDB(Database db,int version) async{
-    await db.execute('create table notes(id integer primary key autoincrement, title text not null, content text not null)');
-  }*/
+   Future _createDB(Database db,int version) async{
+    await db.execute('''CREATE TABLE notes(id integer primary key autoincrement, title text not null, content text not null)''');
+  }
 
   Future<int> create(Note note) async {
     final db = await instance.database;
