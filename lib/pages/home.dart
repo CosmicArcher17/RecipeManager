@@ -16,34 +16,36 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image.asset(
-              "assets/images/undraw_Welcoming_re_x0qo.png",
-              height: 300,
-              fit: BoxFit.cover,
-            ),
-            SizedBox(height: 20,),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, "/ViewRecipes");
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Image.asset(
+                "assets/images/undraw_Welcoming_re_x0qo.png",
+                height: 300,
+                fit: BoxFit.cover,
+              ),
+              SizedBox(height: 20,),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, "/ViewRecipes");
+                },
+                style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 58, 33, 243)),
+                child: Text("Your Recipes",style: TextStyle(color:Colors.white)),
+              ),
+               SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: (){
+                Navigator.pushNamed(context,"/AIPage");
               },
               style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 58, 33, 243)),
-              child: Text("Your Recipes",style: TextStyle(color:Colors.white)),
-            ),
-             SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-              onPressed: (){
-              Navigator.pushNamed(context,"/AIPage");
-            },
-            style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 58, 33, 243)),
-            child:Text("Ask AI",style: TextStyle(color:Colors.white)),
-            ),
-            
-          ],
+              child:Text("Ask AI",style: TextStyle(color:Colors.white)),
+              ),
+              
+            ],
+          ),
         ),
       ),
       drawer: Drawer(),

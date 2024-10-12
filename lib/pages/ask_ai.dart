@@ -11,22 +11,24 @@ class AIPage extends StatelessWidget {
         centerTitle:true
         ),
       body: Center(
-        child: Column(children: [
-          ElevatedButton(onPressed: (){
-            Navigator.pushNamed(context,"/home");
-          }, 
-          style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 58, 33, 243)),
-          child:Text("Home Page",style: TextStyle(color:Colors.white))
-          ),
-          SizedBox(height: 20,),
-          ElevatedButton(onPressed: (){
-            Navigator.pushNamed(context,"/ViewRecipes");
-          }, 
-          style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 58, 33, 243)),
-          child:Text("Your Recipes",style: TextStyle(color:Colors.white))
-          ),
-        ],
-      )
+        child: SingleChildScrollView(
+          child: Column(children: [
+            ElevatedButton(onPressed: (){
+              Navigator.pushNamed(context,"/home");
+            }, 
+            style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 58, 33, 243)),
+            child:Text("Home Page",style: TextStyle(color:Colors.white))
+            ),
+            SizedBox(height: 20,),
+            ElevatedButton(onPressed: (){
+              Navigator.pushNamed(context,"/ViewRecipes");
+            }, 
+            style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 58, 33, 243)),
+            child:Text("Your Recipes",style: TextStyle(color:Colors.white))
+            ),
+          ],
+                ),
+        )
       ),
     );
   }
